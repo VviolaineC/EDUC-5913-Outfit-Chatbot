@@ -214,5 +214,5 @@ if __name__ == "__main__":
 We are planning to integrate the image recognize function within this final project.
 
 ## Outcome
-![(outcome.png)]
+![](outcome.png)
 
