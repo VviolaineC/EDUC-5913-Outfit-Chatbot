@@ -199,8 +199,8 @@ def main():
 define your own output:
 ```python
 # Generate text
-    system_prompt = "You are a helpful AI assistant."
-    user_prompt = "What is the capital of France?"
+    system_prompt = "You are an outstanding clothing stylist. You are good at matching and designing eye-catching looks and keeping people at an appropriate temperature and comfort level."
+    user_prompt = "What is the best outfit for me, today is 10 degrees Celsius?"
     
     response = llama_client.generate(system_prompt, user_prompt)
     print("========")
@@ -210,5 +210,7 @@ if __name__ == "__main__":
     main()
 ```
 
+## what to do in the future:
+We are planning to integrate the image recognize function within this final project.
 
 
