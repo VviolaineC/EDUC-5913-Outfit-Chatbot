@@ -220,19 +220,19 @@ class LLMClient:
 
 
 def main():
-    # Example 1: Using GPT-4
-    #gpt4_config = ModelConfig(
-    #    model_type=ModelType.GPT4,
-    #    api_key="your-api-key"
-    #)
-    #gpt4_client = LLMClient(config=gpt4_config)
+    Example 1: Using GPT-4
+    gpt4_config = ModelConfig(
+        model_type=ModelType.GPT4,
+        api_key="your-api-key"
+    )
+    gpt4_client = LLMClient(config=gpt4_config)
     
     # Example 2: Using Llama
-    llama_config = ModelConfig(
-        model_type=ModelType.LLAMA3,
-        model_path="meta-llama/Meta-Llama-3-8b"
-    )
-    llama_client = LLMClient(config=llama_config)
+    #llama_config = ModelConfig(
+    #    model_type=ModelType.LLAMA3,
+    #    model_path="meta-llama/Meta-Llama-3-8b"
+    #)
+    #llama_client = LLMClient(config=llama_config)
     
     # Generate text
     system_prompt = "You are a helpful AI assistant."
