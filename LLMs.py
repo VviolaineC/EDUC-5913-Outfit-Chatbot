@@ -115,14 +115,14 @@ class LLMClient:
 def main():
     gpt4_config = ModelConfig(
         model_type=ModelType.GPT4,
-        api_key="your api-key"
+        api_key="your_API_Key"
     )
     gpt4_client = LLMClient(config=gpt4_config)
     
     
     # Generate text
-    system_prompt = "You are a helpful AI assistant."
-    user_prompt = "What is the capital of France?"
+    system_prompt = "You are an outstanding clothing stylist. You are good at matching and designing eye-catching looks and keeping people at an appropriate temperature and comfort level."
+    user_prompt = "What is the best outfit for me, today is 10 degrees Celsius?"
     
     response = gpt4_client.generate(system_prompt, user_prompt)
     print("========")
