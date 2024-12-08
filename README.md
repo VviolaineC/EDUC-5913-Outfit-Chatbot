@@ -45,8 +45,7 @@ Issues 问题所在:
 
 •	"llama3" 是什么？一个变量？还是一个具体的值？
 
-**Therefore, during the process of writing code, what we consider is not just the construction of the system. How to make our existing system more semantic (clear), safer and easier to maintain is of crucial importance. Hence, in the early stage of building the system, we introduced "Enum". 
-Although the following piece of code is simple, its advantages will become more and more obvious as the program becomes more complex. **
+**Therefore, during the process of writing code, what we consider is not just the construction of the system. How to make our existing system more semantic (clear), safer and easier to maintain is of crucial importance. Hence, in the early stage of building the system, we introduced "Enum". Although the following piece of code is simple, its advantages will become more and more obvious as the program becomes more complex.**
 
 **因此，在写代码的过程中， 我们考虑的不仅仅是系统的构建， 如何将我们现有系统构建得更语义化（清晰）、更安全、更易维护，至关重要。 所以，在构建系统的前期，我们引入了“Enum”。 
 以下段代码虽然简单，但它的好处会在程序变复杂时越来越明显。**
