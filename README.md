@@ -64,9 +64,18 @@ class ModelType(Enum):
 
 🧠定义一组固定的模型类型，这些模型类型代表了一组不会随意变化的选项。
 
-🤙🏻Improve the readability of code.
+🤙🏻Improve the readability of code
 
 🤙🏻提高代码的可读性
+
+👌🏻Improve code security
+👌🏻提高代码安全性
+
+除了字符串拼写的问题， 用枚举时，IDE 或代码检查工具会自动提示错误
+```python
+if model_type == ModelType.GPT5:  # If GPT5 is not defined, an error will be reported here.
+print("This is GPT-4")
+```
 
 
 ```python
