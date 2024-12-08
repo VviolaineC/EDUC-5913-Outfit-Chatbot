@@ -58,7 +58,7 @@ class ModelType(Enum):
     GPT4 = "gpt4"
     GPT35 = "gpt3.5"
 ```
-## So, what is the benefit of using Enum?
+## So, What is the Benefit of Using Enum?
 
 🧠Define a set of fixed model types, which represent a set of options that won't change randomly.
 
