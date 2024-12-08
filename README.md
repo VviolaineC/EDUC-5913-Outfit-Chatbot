@@ -52,6 +52,16 @@ Issues 问题所在:
 
 
 ```python
+class ModelType(Enum):
+    """Supported model types"""
+    LLAMA3 = "llama3"
+    GPT4 = "gpt4"
+    GPT35 = "gpt3.5"
+```
+
+
+
+```python
 from typing import Optional
 from enum import Enum
 import logging
