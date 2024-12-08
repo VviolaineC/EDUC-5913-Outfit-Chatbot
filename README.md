@@ -28,7 +28,12 @@ Issues 问题所在:
 
 •	没有集中管理时，很容易遗漏或导致逻辑冲突。
 
-🤯Potential Scenario 1 潜在场景1 
+🤯Potential Scenario 2 潜在场景2
+
+When I want to deploy a local open-source model from Hugging Face by myself, my team doesn't recognize this small self-owned model. Using strings directly can't provide any context information, and at this time, the meaning of the code isn't clear enough. 
+
+当我想要自己部署一个hugging face 上的本地开源模型， 我的team 不认识这个自有小模型， 直接使用字符串无法提供任何上下文信息，此时代码的含义不够清晰。
+
 
 ```python
 from typing import Optional
