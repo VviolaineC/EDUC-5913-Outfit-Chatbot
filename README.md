@@ -15,9 +15,13 @@ if model_type == "gpt5":
 print("Running GPT-5")
 ```
 Issues 问题所在:
+
 • If these strings are used in dozens of places, we need to check one by one to see if they have all been updated.
+
 • Without centralized management, it's very easy to miss something or cause logical conflicts. 
+
 •	如果有几十处地方使用了这些字符串，我们需要逐一检查是否都更新了。
+
 •	没有集中管理时，很容易遗漏或导致逻辑冲突。
 
 
