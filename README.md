@@ -8,6 +8,16 @@
 
 😇因为我们是两个人同时写作，所以维护和共建在代码编辑中显得十分重要。譬如说， 当我们每次新增一个模型类型，都需要在代码的多处手动修改，容易遗漏或引入错误。
 
+🤯Potential Scenario 1 潜在场景1 
+```python
+# new additional model "gpt5"
+if model_type == "gpt5":
+print("Running GPT-5")
+```
+
+
+
+
 
 
 ```python
