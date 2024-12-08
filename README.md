@@ -1,5 +1,6 @@
 # EDUC-5913-Outfit-Chatbot
 :)
+#Introduction
 💖Hello everyone. The project of Haipei and I wants to establish a vertical chatbot system integrating multiple models for daily clothing matching. We combine text language models and image recognition capabilities to provide real-time feedback based on user-input images, temperatures within a limited time range, and dressing scenarios.
 
 💖大家好，我和海培的项目想要建立一个集成多种模型的垂直领域聊天机器人系统，用于日常服装搭配。我们结合了文本语言模型以及图片识别能力，依据用户输入的图片、限定时间范围内的气温、穿搭所需场景来进行实时反馈。 
@@ -8,6 +9,7 @@
 
 😇因为我们是两个人同时写作，所以维护和共建在代码编辑中显得十分重要。譬如说， 当我们每次新增一个模型类型，都需要在代码的多处手动修改，容易遗漏或引入错误。
 
+# Potential issues
 🤯Potential Scenario 1 潜在场景1 
 ```python
 # new additional model "gpt5"
@@ -24,7 +26,7 @@ Issues 问题所在:
 
 •	没有集中管理时，很容易遗漏或导致逻辑冲突。
 
-
+🤯Potential Scenario 1 潜在场景1 
 
 ```python
 from typing import Optional
