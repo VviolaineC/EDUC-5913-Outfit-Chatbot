@@ -168,3 +168,5 @@ class LLMClient:
 Next, we defined a method named _encode_image, whose function is to convert an image file into a Base64-encoded string. We send the corresponding image data through the API interface. The specific process is as follows: The user uploads an image → The image is encoded into a Base64 string and embedded in the JSON request → The server receives the request and decodes the Base64 string, converting it into a format that can be processed by the Convolutional Neural Network (CNN). 
 
 接着，我们定义了一个方法 _encode_image，它的作用是 将图像文件转换为 Base64 编码的字符串。 我们通过API 接口发送相对应的图像数据。具体路径为：用户上传图片👉图片被编码为 Base64 字符串，嵌入到 JSON 请求中👉服务端接收请求并解码 Base64 字符串，将其转换为 CNN 可处理的格式。
+
+
