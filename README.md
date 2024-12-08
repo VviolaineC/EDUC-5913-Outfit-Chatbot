@@ -96,8 +96,46 @@ class ModelType(Enum):
 GPT5 = "gpt5"  # newly added
 ```
 
+## Scaling 
 
+😆Similarly, the @dataclass we use later is also considered for the same reason: We hope it can simplify class definitions in the code and enhance its maintainability. 
 
+😆同理，我们在之后使用的@dataclass也是拥有同样的考虑： 希望代码简化类定义、增强其可维护性。
+
+For example, without @dataclass, we would need to write these methods manually:
+例如，如果没有 @dataclass，我们需要手动编写这些方法：
+
+```python
+class ModelConfig:
+    def __init__(self, model_type, max_length=4096, temperature=0.7):
+        self.model_type = model_type
+        self.max_length = max_length
+        self.temperature = temperature
+
+    def __repr__(self):
+        return f"ModelConfig(model_type={self.model_type}, max_length={self.max_length}, temperature={self.temperature})"
+
+    def __eq__(self, other):
+        if not isinstance(other, ModelConfig):
+            return False
+        return (self.model_type == other.model_type and
+                self.max_length == other.max_length and
+                self.temperature == other.temperature)
+```
+
+**However, after using @dataclass, the effect is exactly the same and the code is quite concise.**
+
+**但有了@dataclass 之后， 效果完全相同，代码相当简洁。**
+
+```python
+from dataclasses import dataclass
+
+@dataclass
+class ModelConfig:
+    model_type: str
+    max_length: int = 4096
+temperature: float = 0.7
+```
 
 
 
