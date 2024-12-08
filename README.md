@@ -69,7 +69,10 @@ class ModelType(Enum):
 🤙🏻提高代码的可读性
 
 👌🏻Improve code security
+
 👌🏻提高代码安全性
+
+Besides the issue of string spelling, when using enums, IDEs or code checking tools will automatically prompt errors.
 
 除了字符串拼写的问题， 用枚举时，IDE 或代码检查工具会自动提示错误
 ```python
