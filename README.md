@@ -58,7 +58,11 @@ class ModelType(Enum):
     GPT4 = "gpt4"
     GPT35 = "gpt3.5"
 ```
+### So, what is the benefit of using Enum?
 
+🧠1.Define a set of fixed model types, which represent a set of options that won't change randomly.
+
+🧠1.定义一组固定的模型类型，这些模型类型代表了一组不会随意变化的选项。
 
 
 ```python
