@@ -103,6 +103,7 @@ GPT5 = "gpt5"  # newly added
 😆同理，我们在之后使用的@dataclass也是拥有同样的考虑： 希望代码简化类定义、增强其可维护性。
 
 For example, without @dataclass, we would need to write these methods manually:
+
 例如，如果没有 @dataclass，我们需要手动编写这些方法：
 
 ```python
