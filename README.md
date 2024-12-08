@@ -144,4 +144,25 @@ Since we expect this system to integrate multiple models, we use a unified inter
 
 由于我们希望本系统集成多种模型， 因此我们通过一个统一的接口来初始化、管理和使用各种大语言模型（LLM）。在这里，我们使用使用ModelConfig进行模型初始化的参数存储、 用LLMClient读取 ModelConfig 的内容来加载和使用模型。
 
+```python
+class LLMClient:
+    """Generic LLM client supporting multiple model types"""
+    
+    def __init__(self, config: ModelConfig):
+        """
+        Initialize LLM client with specified configuration
+        
+        Args:
+            config: ModelConfig instance with model settings
+        """
+        self.config = config
+        self.logger = logging.getLogger(__name__)
+        self.model = None
+        self.tokenizer = None
+        
+        # Initialize the specified model type
+        self._initialize_model()
+```
+
+
 
