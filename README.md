@@ -164,5 +164,35 @@ class LLMClient:
         self._initialize_model()
 ```
 
+## 对于模型的初始化配置：
+
+### 目的：
+根据配置中的 model_type 初始化对应的语言模型。
+### 处理逻辑：
+如果 model_type 是支持的模型类型（如 GPT4、GPT35、GPT4V），调用 _initialize_openai 加载模型。
+如果 model_type 不被支持，抛出异常。
+### 错误处理：
+捕获初始化过程中的任何异常，记录日志后重新抛出。
+### 记录日志：
+成功时记录初始化完成的信息。
+失败时记录错误信息。
+
+```python
+
+    def _initialize_model(self):
+        """Initialize the appropriate model based on configuration"""
+        try:
+            if self.config.model_type in [ModelType.GPT4, ModelType.GPT35, ModelType.GPT4V]:
+                self._initialize_openai()
+            else:
+                raise ValueError(f"Unsupported model type: {self.config.model_type}")
+                
+            self.logger.info(f"Successfully initialized {self.config.model_type} model")
+            
+        except Exception as e:
+            self.logger.error(f"Error initializing model: {e}")
+            raise
+```
+
 
 
