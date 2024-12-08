@@ -185,7 +185,7 @@ Next, we defined a method named _encode_image, whose function is to convert an i
             return base64.b64encode(image_file.read()).decode('utf-8')
 ```
 
-## Prompt engineer
+## Prompt engineering
 
 Last but not least, We have defined system prompt, user_prompt, image_paths and temperature.
 
@@ -195,4 +195,27 @@ Last but not least, We have defined system prompt, user_prompt, image_paths and 
                 user_prompt: str, 
                 image_paths: Optional[List[str]] = None,
                 temperature: Optional[float] = None) -> str:
+```
+
+## Outcome!
+
+通过 GPT-4V 模型实现一个多模态任务，结合文本提示和图像输入，为用户提供基于温度和场景的服装搭配建议。
+
+Implement a multi-modal task through the GPT-4V model, combining text prompts and image inputs to provide users with clothing matching suggestions based on temperature and scenarios. 
+
+```python
+gpt4v_config = ModelConfig(
+        model_type=ModelType.GPT4V,
+        api_key="API-key"
+    )
+    gpt4v_client = LLMClient(config=gpt4v_config)
+
+    
+    system_prompt = "You are an outstanding clothing stylist. You are good at matching and designing eye-catching looks and keeping people at an appropriate temperature and comfort level."
+    user_prompt = "These are the clothes I need for dressing up within a week. The average temperature this week is between 10 and 20 degrees Celsius. There are no special activities this week, and the main activity is going to work. Please help me match the clothes according to my pictures, the temperature and the scene."
+    image_paths = ["imgs/croptop.png", "imgs/hoodie.webp", "imgs/jacket.png", "imgs/shirt.png", "imgs/trenchcoat.png"]
+    
+    response = gpt4v_client.generate(system_prompt, user_prompt, image_paths)
+    print("========")
+    print(response)
 ```
