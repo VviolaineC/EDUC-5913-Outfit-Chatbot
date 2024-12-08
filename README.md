@@ -138,4 +138,10 @@ class ModelConfig:
 temperature: float = 0.7
 ```
 
-## 
+## ModelConfig & LLMClient
+
+Since we expect this system to integrate multiple models, we use a unified interface to initialize, manage and utilize various large language models (LLM). Here, we use ModelConfig to store the parameters for model initialization, and the LLMClient is employed to read the content of ModelConfig to load and use the models. 
+
+由于我们希望本系统集成多种模型， 因此我们通过一个统一的接口来初始化、管理和使用各种大语言模型（LLM）。在这里，我们使用使用ModelConfig进行模型初始化的参数存储、 用LLMClient读取 ModelConfig 的内容来加载和使用模型。
+
+
