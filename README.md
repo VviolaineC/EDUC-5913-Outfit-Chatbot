@@ -12,7 +12,7 @@
 😇因为我们是两个人同时写作，所以维护和共建在代码编辑中显得十分重要。譬如说， 当我们每次新增一个模型类型，都需要在代码的多处手动修改，容易遗漏或引入错误。
 
 ## Potential issues
-🤯Potential Scenario 1 潜在场景1 
+### 🤯Potential Scenario 1 潜在场景1 
 ```python
 # new additional model "gpt5"
 if model_type == "gpt5":
@@ -28,11 +28,18 @@ Issues 问题所在:
 
 •	没有集中管理时，很容易遗漏或导致逻辑冲突。
 
-🤯Potential Scenario 2 潜在场景2
+### 🤯Potential Scenario 2 潜在场景2
 
 When I want to deploy a local open-source model from Hugging Face by myself, my team doesn't recognize this small self-owned model. Using strings directly can't provide any context information, and at this time, the meaning of the code isn't clear enough. 
 
 当我想要自己部署一个hugging face 上的本地开源模型， 我的team 不认识这个自有小模型， 直接使用字符串无法提供任何上下文信息，此时代码的含义不够清晰。
+
+```python
+if model_type == "llama3":
+print("Model is LLaMA-3")
+```
+
+•	"llama3" 是什么？一个变量？还是一个具体的值？
 
 
 ```python
