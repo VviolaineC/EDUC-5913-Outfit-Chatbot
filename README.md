@@ -80,6 +80,11 @@ if model_type == ModelType.GPT5:  # If GPT5 is not defined, an error will be rep
 print("This is GPT-4")
 ```
 
+😁More convenient for expansion and maintenance.
+
+😁更方便的扩展和维护
+
+
 
 ```python
 from typing import Optional
