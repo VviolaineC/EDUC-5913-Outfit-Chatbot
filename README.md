@@ -84,6 +84,21 @@ print("This is GPT-4")
 
 😁更方便的扩展和维护
 
+Suppose a new model needs to be added in the future, such as "gpt5". You can directly add a new member to the enumeration class: 
+
+假设以后需要添加一个新的模型，比如 "gpt5"，可以直接在枚举类中新增成员：
+
+```python
+class ModelType(Enum):
+    LLAMA3 = "llama3"
+    GPT4 = "gpt4"
+    GPT35 = "gpt3.5"
+GPT5 = "gpt5"  # newly added
+```
+
+
+
+
 
 
 ```python
