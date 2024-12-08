@@ -58,11 +58,27 @@ class ModelType(Enum):
     GPT4 = "gpt4"
     GPT35 = "gpt3.5"
 ```
-### So, what is the benefit of using Enum?
+## So, what is the benefit of using Enum?
 
-🧠1.Define a set of fixed model types, which represent a set of options that won't change randomly.
+🧠Define a set of fixed model types, which represent a set of options that won't change randomly.
 
-🧠1.定义一组固定的模型类型，这些模型类型代表了一组不会随意变化的选项。
+🧠定义一组固定的模型类型，这些模型类型代表了一组不会随意变化的选项。
+
+Why not use strings directly?
+
+It's feasible to use strings directly, but there are the following disadvantages:
+
+• Prone to errors: Developers may make typos, for example, writing "gpt34".
+
+• Difficult to maintain: When there are more model types, a large number of strings will be scattered in the code, making it troublesome to update or check them.
+
+• Unclear: Using strings directly may make the meaning of the code unclear. For example, what is "llama3"? Is it a variable or a configuration value? 
+
+为什么不直接用字符串？
+直接用字符串是可行的，但有以下缺点：
+•	易出错：开发者可能会打错字，比如写成 "gpt34"。
+•	难以维护：当模型类型变多时，代码中散布大量的字符串，更新或检查很麻烦。
+•	不清晰：直接用字符串可能让代码的含义不够明确，比如 "llama3" 是什么？一个变量？一个配置值？
 
 
 ```python
