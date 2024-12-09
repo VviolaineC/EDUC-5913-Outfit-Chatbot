@@ -262,12 +262,12 @@ As you can see, all the initialization logic is crammed into one place. It’s m
 
 ### Lessons Learned
 
-1. Why logging matters
-2. The power of modular design
+☀️1. Why logging matters
+✨2. The power of modular design
 
 ### Where We’re Headed Next
-1. Expand model initialization
-2. Improve logging
+💫1. Expand model initialization
+🪐2. Improve logging
 
 ## About Image upload 关于上传图像
 
