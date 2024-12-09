@@ -242,12 +242,20 @@ To fix this, we switched to a modular design. Here’s how it works:
 
 ### The Problem with print
 In the beginning, we used print to output debug information, but we quickly realized its limitations:
-1.	No categorization: print doesn’t differentiate between normal and error messages, so everything ends up mixed.
-3.	Inflexible: You can’t easily output to multiple places (like both the console and a file).
-4.	Inefficient debugging: The unstructured output made it hard to pinpoint problems quickly.
+1.	No categorization
+2.	Inflexible
+3.	Inefficient debugging
 
+Why Logger is Better
+1.	Real-time monitoring
+2.	Issue tracking
+3.	Historical records
 
+### What Logger Brings to the Table
 
+1.	Clear log levels
+2.	Better maintainability
+3.	Faster debugging
 
 
 
