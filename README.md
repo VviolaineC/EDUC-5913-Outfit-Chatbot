@@ -257,7 +257,16 @@ Why Logger is Better
 2.	Better maintainability
 3.	Faster debugging
 
+## Summary and Reflection
 
+### Lessons Learned
+
+1. Why logging matters
+2. The power of modular design
+
+### Where We’re Headed Next
+1. Expand model initialization
+2. Improve logging
 
 ## About Image upload 关于上传图像
 
