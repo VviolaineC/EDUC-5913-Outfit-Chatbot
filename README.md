@@ -207,6 +207,7 @@ As you can see, all the initialization logic is crammed into one place. It’s m
 🪐 To fix this, we switched to a modular design. Here’s how it works:
 
 
+
 1.	Validate model_type:
 
 - If it’s GPT4 or GPT3.5, we call _initialize_openai to handle OpenAI models.
