@@ -246,7 +246,7 @@ In the beginning, we used print to output debug information, but we quickly real
 2.	Inflexible
 3.	Inefficient debugging
 
-Why Logger is Better
+### Why Logger is Better
 1.	Real-time monitoring
 2.	Issue tracking
 3.	Historical records
