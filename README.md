@@ -249,17 +249,18 @@ As you can see, all the initialization logic is crammed into one place. It’s m
 
 ### Why Logger is Better
 1.	Real-time monitoring💥
-2.	Issue tracking🌟
-3.	Historical records☀️
-
 
 ```python
 self.logger.info(f"Successfully initialized {self.config.model_type} model")
 ```
 
+2.	Issue tracking🌟
+
 ```python
 self.logger.error(f"Error initializing model: {e}")
 ```
+
+3.	Historical records☀️
 
 
 ### What Logger Brings to the Table
