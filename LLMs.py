@@ -1,12 +1,15 @@
 from typing import Optional
 from enum import Enum
 import logging
+from transformers import AutoTokenizer, AutoModelForCausalLM
+import torch
 import openai
 from dataclasses import dataclass
 
 
 class ModelType(Enum):
     """Supported model types"""
+    LLAMA3 = "llama3"
     GPT4 = "gpt4"
     GPT35 = "gpt3.5"
 
@@ -20,6 +23,7 @@ class ModelConfig:
     api_base: Optional[str] = None
     max_length: int = 4096
     temperature: float = 0.7
+    device: str = "cuda" if torch.cuda.is_available() else "cpu"
 
 
 class LLMClient:
@@ -45,6 +49,8 @@ class LLMClient:
         try:
             if self.config.model_type in [ModelType.GPT4, ModelType.GPT35]:
                 self._initialize_openai()
+            elif self.config.model_type == ModelType.LLAMA3:
+                self._initialize_llama()
             else:
                 raise ValueError(f"Unsupported model type: {self.config.model_type}")
                 
@@ -85,7 +91,7 @@ class LLMClient:
             if self.config.model_type in [ModelType.GPT4, ModelType.GPT35]:
                 return self._generate_openai(system_prompt, user_prompt, temp)
             else:
-                self.logger.error(f"model should be gpt3.5 or gpt4")
+                return self._generate_local(system_prompt, user_prompt, temp)
                 
         except Exception as e:
             self.logger.error(f"Error generating response: {e}")
@@ -110,19 +116,127 @@ class LLMClient:
         
         return response.choices[0].message.content
 
-    
-    
+    def _initialize_llama(self):
+        """Initialize Llama model with proper token configuration"""
+        try:
+            # Initialize tokenizer with proper defaults
+            self.tokenizer = AutoTokenizer.from_pretrained(
+                self.config.model_path,
+                trust_remote_code=True,
+                padding_side="left"  # Important for attention mask alignment
+            )
+            
+            # Ensure pad token is set correctly
+            if self.tokenizer.pad_token is None:
+                self.tokenizer.pad_token = self.tokenizer.eos_token
+                self.tokenizer.pad_token_id = self.tokenizer.eos_token_id
+                
+            # Initialize model with safe defaults
+            self.model = AutoModelForCausalLM.from_pretrained(
+                self.config.model_path,
+                torch_dtype=torch.float16 if self.config.device == "cuda" else torch.float32,
+                device_map="auto",
+                trust_remote_code=True,
+                use_safetensors=True,  # Use safetensors to avoid weight issues
+                low_cpu_mem_usage=True  # Help with memory management
+            )
+            
+            # Ensure model and tokenizer vocab sizes match
+            if len(self.tokenizer) != self.model.config.vocab_size:
+                logging.warning(f"Tokenizer vocab size ({len(self.tokenizer)}) != Model vocab size ({self.model.config.vocab_size})")
+                # Resize model embeddings to match tokenizer
+                self.model.resize_token_embeddings(len(self.tokenizer))
+            
+            logging.info(f"Model initialized successfully with vocab size {len(self.tokenizer)}")
+            
+        except Exception as e:
+            logging.error(f"Error initializing model: {e}")
+            raise
+
+    def _generate_local(self, 
+                   system_prompt: str, 
+                   user_prompt: str, 
+                   temperature: float = 0.7,
+                   max_new_tokens: Optional[int] = None) -> str:
+        """Generate text using local models with enhanced handling"""
+        try:
+            # Format prompt according to Llama 3 chat template
+            chat_template = f"""<s>[INST] <<SYS>>{system_prompt}<</SYS>>
+    {user_prompt}[/INST]
+    """
+            # Tokenize with proper handling
+            inputs = self.tokenizer(
+                chat_template,
+                return_tensors="pt",
+                padding=True,
+                truncation=True,
+                max_length=2048,
+                return_attention_mask=True,
+            )
+            
+            # Move inputs to correct device
+            input_ids = inputs['input_ids'].to(self.config.device)
+            attention_mask = inputs['attention_mask'].to(self.config.device)
+
+            # Set up generation config
+            gen_config = {
+                'input_ids': input_ids,
+                'attention_mask': attention_mask,
+                'max_new_tokens': max_new_tokens or 1024,
+                'do_sample': temperature > 0,
+                'temperature': temperature,
+                'top_p': 0.9,
+                'top_k': 50,
+                'repetition_penalty': 1.1,
+                'pad_token_id': self.tokenizer.pad_token_id,
+                'eos_token_id': self.tokenizer.eos_token_id,
+                'use_cache': True
+            }
+
+            # Generate with safe defaults
+            with torch.no_grad():
+                outputs = self.model.generate(**gen_config)
+
+            # Get only the new tokens (exclude input prompt)
+            new_tokens = outputs[0][len(input_ids[0]):]
+            
+            # Decode response
+            response = self.tokenizer.decode(
+                new_tokens,
+                skip_special_tokens=True,
+                clean_up_tokenization_spaces=True
+            )
+
+            # Clean up any remaining special tokens or formatting
+            response = response.replace('[/INST]', '').strip()
+            response = ' '.join(response.split())  # Normalize whitespace
+
+            return response
+
+        except Exception as e:
+            logging.error(f"Error in text generation: {e}", exc_info=True)
+            raise
+
+
+
 def main():
+    # Example 1: Using GPT-4
     gpt4_config = ModelConfig(
-        model_type=ModelType.GPT4,
-        api_key="your_API_Key"
+       model_type=ModelType.GPT4,
+       api_key="your-api-key"
     )
     gpt4_client = LLMClient(config=gpt4_config)
     
+    # Example 2: Using Llama
+    # llama_config = ModelConfig(
+    #     model_type=ModelType.LLAMA3,
+    #     model_path="meta-llama/Meta-Llama-3-8b"
+    # )
+    # llama_client = LLMClient(config=llama_config)
     
     # Generate text
-    system_prompt = "You are an outstanding clothing stylist. You are good at matching and designing eye-catching looks and keeping people at an appropriate temperature and comfort level."
-    user_prompt = "What is the best outfit for me, today is 10 degrees Celsius?"
+    system_prompt = "You are a helpful AI assistant."
+    user_prompt = "What is the capital of France?"
     
     response = gpt4_client.generate(system_prompt, user_prompt)
     print("========")
