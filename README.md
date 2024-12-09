@@ -255,8 +255,12 @@ As you can see, all the initialization logic is crammed into one place. It’s m
 
 ```python
 self.logger.info(f"Successfully initialized {self.config.model_type} model")
+```
+
+```python
 self.logger.error(f"Error initializing model: {e}")
 ```
+
 
 ### What Logger Brings to the Table
 
