@@ -227,8 +227,16 @@ o	If it’s unsupported, we raise an exception and log the error.
 
 2.	Log the result: We log what happened whether it’s a success or failure.
 
+### Modular Process
 
+1.	Check if the model type is supported:
 
+o	    GPT4 / GPT3.5 → Call _initialize_openai.
+o	    LLAMA3 → Call _initialize_llama.
+
+3.	If unsupported, throw an error and log it.
+
+5.	Log successful initialization.
 
 
 
