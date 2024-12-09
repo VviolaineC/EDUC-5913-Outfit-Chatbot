@@ -170,19 +170,67 @@ class LLMClient:
 
 When we first implemented model initialization, we ran into a couple of issues:
 
-1.	No strict validation: We didn’t fully validate the model_type parameter, which meant unsupported model types could accidentally get through.
-2.	Risk of crashes: If an unsupported model type was passed, the program could crash because it didn’t know how to handle it.
-Why Non-Modular Design Doesn’t Work
+1.	No strict validation
+2.	Risk of crashes
 
 ### Why Non-Modular Design Doesn’t Work!
 
 If you don’t use a modular approach, you end up putting all the logic for selecting and initializing models directly in the main flow. Here’s why that’s a bad idea:
 
-1.	Redundant code: Every time you check the model_type, you have to explicitly validate it. This leads to repetitive code.
+1.	Redundant code
 
-2.	Hard to maintain: Embedding all the logic in the main flow makes the code complex and tough to reuse or test.
-   
-3.	Scalability issues: Adding new model types later means changing logic in multiple places, which increases the chances of introducing bugs.
+2.	Hard to maintain
+
+3.	Scalability issues
+
+### Non-Modular Example
+
+Here’s what it looked like without modular design:
+
+```python
+try:
+    if config.model_type in [ModelType.GPT4, ModelType.GPT35]:
+        if not config.api_key:
+            raise ValueError("API key required for OpenAI models")
+        openai.api_key = config.api_key
+        if config.api_base:
+            openai.api_base = config.api_base
+        logger.info(f"Successfully initialized OpenAI model: {config.model_type}")
+        
+    elif config.model_type == ModelType.LLAMA3:
+        # Logic for initializing LLAMA3
+        logger.info("Successfully initialized LLAMA3 model")
+        
+    else:
+        raise ValueError(f"Unsupported model type: {config.model_type}")
+        
+except Exception as e:
+    logger.error(f"Error initializing model: {e}")
+    raise
+```
+
+As you can see, all the initialization logic is crammed into one place. It’s messy, hard to read, and risky when it comes to adding or modifying features.
+
+
+### The Modular Solution
+
+To fix this, we switched to a modular design. Here’s how it works:
+
+
+1.	Validate model_type:
+
+o	If it’s GPT4 or GPT3.5, we call _initialize_openai to handle OpenAI models.
+
+o	If it’s LLAMA3, we call _initialize_llama to handle the Llama model.
+
+o	If it’s unsupported, we raise an exception and log the error.
+
+2.	Log the result: We log what happened whether it’s a success or failure.
+
+
+
+
+
 
 
 
