@@ -230,33 +230,33 @@ As you can see, all the initialization logic is crammed into one place. It’s m
 
 ### Modular Process
 
-1.	Check if the model type is supported:
+👀 1.	Check if the model type is supported:
 
 - GPT4 / GPT3.5 → Call _initialize_openai.
 - LLAMA3 → Call _initialize_llama.
 
-2.	If unsupported, throw an error and log it.
+🧠 2.	If unsupported, throw an error and log it.
 
-3.	Log successful initialization.
+🕶 3.	Log successful initialization.
 
 ## Switched from "print" to "logger"
 
 ### The Problem with print
-In the beginning, we used print to output debug information, but we quickly realized its limitations:
+💫 In the beginning, we used print to output debug information, but we quickly realized its limitations:
 1.	No categorization
 2.	Inflexible
 3.	Inefficient debugging
 
 ### Why Logger is Better
-1.	Real-time monitoring
-2.	Issue tracking
-3.	Historical records
+1.	Real-time monitoring💥
+2.	Issue tracking🌟
+3.	Historical records☀️
 
 ### What Logger Brings to the Table
 
-1.	Clear log levels
-2.	Better maintainability
-3.	Faster debugging
+1.	Clear log levels🫧
+2.	Better maintainability✨
+3.	Faster debugging⚡️
 
 ## Summary and Reflection
 
