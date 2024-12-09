@@ -219,11 +219,11 @@ To fix this, we switched to a modular design. Here’s how it works:
 
 1.	Validate model_type:
 
-o	If it’s GPT4 or GPT3.5, we call _initialize_openai to handle OpenAI models.
+- If it’s GPT4 or GPT3.5, we call _initialize_openai to handle OpenAI models.
 
-o	If it’s LLAMA3, we call _initialize_llama to handle the Llama model.
+- If it’s LLAMA3, we call _initialize_llama to handle the Llama model.
 
-o	If it’s unsupported, we raise an exception and log the error.
+- If it’s unsupported, we raise an exception and log the error.
 
 2.	Log the result: We log what happened whether it’s a success or failure.
 
@@ -231,12 +231,21 @@ o	If it’s unsupported, we raise an exception and log the error.
 
 1.	Check if the model type is supported:
 
-o	    GPT4 / GPT3.5 → Call _initialize_openai.
-o	    LLAMA3 → Call _initialize_llama.
+- GPT4 / GPT3.5 → Call _initialize_openai.
+- LLAMA3 → Call _initialize_llama.
 
-3.	If unsupported, throw an error and log it.
+2.	If unsupported, throw an error and log it.
 
-5.	Log successful initialization.
+3.	Log successful initialization.
+
+## Switched from "print" to "logger"
+
+### The Problem with print
+In the beginning, we used print to output debug information, but we quickly realized its limitations:
+1.	No categorization: print doesn’t differentiate between normal and error messages, so everything ends up mixed.
+3.	Inflexible: You can’t easily output to multiple places (like both the console and a file).
+4.	Inefficient debugging: The unstructured output made it hard to pinpoint problems quickly.
+
 
 
 
