@@ -252,6 +252,12 @@ As you can see, all the initialization logic is crammed into one place. It’s m
 2.	Issue tracking🌟
 3.	Historical records☀️
 
+
+```python
+self.logger.info(f"Successfully initialized {self.config.model_type} model")
+self.logger.error(f"Error initializing model: {e}")
+```
+
 ### What Logger Brings to the Table
 
 1.	Clear log levels🫧
