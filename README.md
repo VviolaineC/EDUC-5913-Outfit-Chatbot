@@ -1,4 +1,4 @@
-# EDUC-5913-Outfit-Chatbot
+# EDUC5913-Outfit-Chatbot-Haipei Li & Zihan Cao
 :)
 
 ## Introduction
