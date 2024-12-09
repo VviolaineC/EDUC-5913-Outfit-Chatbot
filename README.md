@@ -140,9 +140,9 @@ temperature: float = 0.7
 
 ## ModelConfig & LLMClient
 
-Since we expect this system to integrate multiple models, we use a unified interface to initialize, manage and utilize various large language models (LLM). Here, we use ModelConfig to store the parameters for model initialization, and the LLMClient is employed to read the content of ModelConfig to load and use the models. 
+⛄️ Since we expect this system to integrate multiple models, we use a unified interface to initialize, manage and utilize various large language models (LLM). Here, we use ModelConfig to store the parameters for model initialization, and the LLMClient is employed to read the content of ModelConfig to load and use the models. 
 
-由于我们希望本系统集成多种模型， 因此我们通过一个统一的接口来初始化、管理和使用各种大语言模型（LLM）。在这里，我们使用使用ModelConfig进行模型初始化的参数存储、 用LLMClient读取 ModelConfig 的内容来加载和使用模型。
+⛄️ 由于我们希望本系统集成多种模型， 因此我们通过一个统一的接口来初始化、管理和使用各种大语言模型（LLM）。在这里，我们使用使用ModelConfig进行模型初始化的参数存储、 用LLMClient读取 ModelConfig 的内容来加载和使用模型。
 
 ```python
 class LLMClient:
@@ -185,7 +185,7 @@ If you don’t use a modular approach, you end up putting all the logic for sele
 
 ### Non-Modular Example
 
-Here’s what it looked like without modular design:
+🍋 Here’s what it looked like without modular design:
 
 ```python
 try:
@@ -215,7 +215,7 @@ As you can see, all the initialization logic is crammed into one place. It’s m
 ### The Modular Solution
 
 
-To fix this, we switched to a modular design. Here’s how it works:
+🪐 To fix this, we switched to a modular design. Here’s how it works:
 
 
 1.	Validate model_type:
