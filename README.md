@@ -164,6 +164,25 @@ class LLMClient:
         self._initialize_model()
 ```
 
+## Model Initialization 
+
+### The Problem
+
+When we first implemented model initialization, we ran into a couple of issues:
+
+1.	No strict validation: We didn’t fully validate the model_type parameter, which meant unsupported model types could accidentally get through.
+2.	Risk of crashes: If an unsupported model type was passed, the program could crash because it didn’t know how to handle it.
+Why Non-Modular Design Doesn’t Work
+
+### Why Non-Modular Design Doesn’t Work!
+
+If you don’t use a modular approach, you end up putting all the logic for selecting and initializing models directly in the main flow. Here’s why that’s a bad idea:
+
+1.	Redundant code: Every time you check the model_type, you have to explicitly validate it. This leads to repetitive code.
+
+2.	Hard to maintain: Embedding all the logic in the main flow makes the code complex and tough to reuse or test.
+   
+3.	Scalability issues: Adding new model types later means changing logic in multiple places, which increases the chances of introducing bugs.
 
 
 
