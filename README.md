@@ -168,7 +168,7 @@ class LLMClient:
 
 ### The Problem
 
-When we first implemented model initialization, we ran into a couple of issues:
+🥲 When we first implemented model initialization, we ran into a couple of issues:
 
 1.	No strict validation
 2.	Risk of crashes
@@ -177,11 +177,11 @@ When we first implemented model initialization, we ran into a couple of issues:
 
 If you don’t use a modular approach, you end up putting all the logic for selecting and initializing models directly in the main flow. Here’s why that’s a bad idea:
 
-1.	Redundant code
+1.	Redundant code ✨
 
-2.	Hard to maintain
+2.	Hard to maintain 🌟
 
-3.	Scalability issues
+3.	Scalability issues 💫
 
 ### Non-Modular Example
 
@@ -213,6 +213,7 @@ As you can see, all the initialization logic is crammed into one place. It’s m
 
 
 ### The Modular Solution
+
 
 To fix this, we switched to a modular design. Here’s how it works:
 
