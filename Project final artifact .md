@@ -53,3 +53,41 @@ class ModelConfig:
     max_length: int = 4096
     temperature: float = 0.7
 ```
+
+## Define a Class LLMClient 
+
+A generic client for interacting with multiple types of language models.
+
+```python
+
+class LLMClient:
+    """Generic LLM client supporting multiple model types"""
+    
+    def __init__(self, config: ModelConfig):
+        """
+        Initialize LLM client with specified configuration
+        
+        Args:
+            config: ModelConfig instance with model settings
+        """
+        self.config = config
+        self.logger = logging.getLogger(__name__)
+        self.model = None
+        self.tokenizer = None
+        
+        # Initialize the specified model type
+        self._initialize_model()
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
