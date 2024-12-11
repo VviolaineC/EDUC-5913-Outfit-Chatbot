@@ -116,7 +116,23 @@ Initializing the OpenAI API Client by Setting up the Necessary Configurations
 
 ## Encode an Image File into a Base64 String
 
+```python
+    def _encode_image(self, image_path: str) -> str:
+        """
+        Encode image to base64 string
+        
+        Args:
+            image_path: Path to image file
+            
+        Returns:
+            str: Base64 encoded image
+        """
+        with open(image_path, "rb") as image_file:
+            return base64.b64encode(image_file.read()).decode('utf-8')
 
+```
+
+    
 
 
 
