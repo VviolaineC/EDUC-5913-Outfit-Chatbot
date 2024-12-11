@@ -132,8 +132,7 @@ Initializing the OpenAI API Client by Setting up the Necessary Configurations
 
 ```
 
-## 
-Enable text generation using the configured model and optionally incorporates vision tasks if images are provided. The method dynamically handles different model types (e.g., GPT4V, GPT4, GPT35), ensuring appropriate behavior based on the model's capabilities.
+## Generate Text Using Configured Model
 
 ```python
 
