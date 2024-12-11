@@ -132,6 +132,62 @@ Initializing the OpenAI API Client by Setting up the Necessary Configurations
 
 ```
 
+## 
+Enable text generation using the configured model and optionally incorporates vision tasks if images are provided. The method dynamically handles different model types (e.g., GPT4V, GPT4, GPT35), ensuring appropriate behavior based on the model's capabilities.
+
+```python
+
+    def _generate_openai(self, 
+                        system_prompt: str, 
+                        user_prompt: str, 
+                        temperature: float) -> str:
+        """Generate text using OpenAI API"""
+        model_name = "gpt-4" if self.config.model_type == ModelType.GPT4 else "gpt-3.5-turbo"
+        
+        response = openai.chat.completions.create(
+            model=model_name,
+            messages=[
+                {"role": "system", "content": system_prompt},
+                {"role": "user", "content": user_prompt}
+            ],
+            temperature=temperature,
+            max_tokens=self.config.max_length
+        )
+        
+        return response.choices[0].message.content
+```
+
+
+
+## Generate Text Using OpenAI's Language Models
+
+```python
+    def _generate_openai_vision(self,
+                              system_prompt: str,
+                              user_prompt: str,
+                              image_paths: List[str],
+                              temperature: float) -> str:
+        """Generate text using OpenAI GPT-4V API"""
+        messages = [{"role": "system", "content": system_prompt}]
+        
+        content = []
+        content.append({"type": "text", "text": user_prompt})
+        
+        for image_path in image_paths:
+            base64_image = self._encode_image(image_path)
+            content.append({
+                "type": "image_url",
+                "image_url": {
+                    "url": f"data:image/jpeg;base64,{base64_image}"
+                }
+            })
+```
+
+
+        
+
+
+
 
 
 
