@@ -15,3 +15,12 @@ Cost efficiency is achieved by using lightweight local models for routine tasks 
 Multimodel agents provide greater reliability and flexibility since they're not dependent on a single provider's API, eliminating vulnerabilities to external changes or outages. The architecture supports scalability through easy integration of new models and customization of workflows.
 
 This approach empowers developers with deeper control over model selection, fine-tuning, and orchestration, fostering technical innovation. The result is a robust, adaptable system that efficiently handles sophisticated AI tasks requiring multi-modal processing, making it superior to standalone API usage for complex applications.
+
+##  Setting up the Foundational Components
+
+from typing import Optional, List
+from enum import Enum
+import logging
+import openai
+from dataclasses import dataclass
+import base64
