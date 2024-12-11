@@ -39,3 +39,17 @@ class ModelType(Enum):
     GPT4V = "gpt-4o"
 ```
 
+## Defines a data class ModelConfig
+Store configuration settings for initializing and interacting with a specific AI model
+
+```python
+@dataclass
+class ModelConfig:
+    """Configuration for model initialization"""
+    model_type: ModelType
+    model_path: Optional[str] = None  # Local path or HuggingFace model ID
+    api_key: Optional[str] = None
+    api_base: Optional[str] = None
+    max_length: int = 4096
+    temperature: float = 0.7
+```
