@@ -132,10 +132,6 @@ Initializing the OpenAI API Client by Setting up the Necessary Configurations
 
 ```
 
-    
-
-
-
 
 
 
