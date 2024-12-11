@@ -114,6 +114,8 @@ Initializing the OpenAI API Client by Setting up the Necessary Configurations
     
 ```
 
+## Encode an Image File into a Base64 String
+
 
 
 
