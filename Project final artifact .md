@@ -26,3 +26,16 @@ import openai
 from dataclasses import dataclass
 import base64
 ```
+
+## Defining an enumeration (Enum) class named ModelType
+
+This method is used to represent a set of predefined constants corresponding to different model types that the system supports.
+
+```python
+class ModelType(Enum):
+    """Supported model types"""
+    GPT4 = "gpt4"
+    GPT35 = "gpt3.5"
+    GPT4V = "gpt-4o"
+```
+
