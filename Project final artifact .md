@@ -182,8 +182,26 @@ Initializing the OpenAI API Client by Setting up the Necessary Configurations
             })
 ```
 
+## Generating Text Responses Using both Text-only Input and Text with Image Input.
+```python
+def main():
+   
+    gpt4v_config = ModelConfig(
+        model_type=ModelType.GPT4V,
+        api_key="API-key"
+    )
+    gpt4v_client = LLMClient(config=gpt4v_config)
 
-        
+    
+    system_prompt = "You are an outstanding clothing stylist. You are good at matching and designing eye-catching looks and keeping people at an appropriate temperature and comfort level."
+    user_prompt = "These are the clothes I need for dressing up within a week. The average temperature this week is between 10 and 20 degrees Celsius. There are no special activities this week, and the main activity is going to work. Please help me match the clothes according to my pictures, the temperature and the scene."
+    image_paths = ["imgs/croptop.png", "imgs/hoodie.webp", "imgs/jacket.png", "imgs/shirt.png", "imgs/trenchcoat.png"]
+    
+    response = gpt4v_client.generate(system_prompt, user_prompt, image_paths)
+    print("========")
+    print(response)
+
+```
 
 
 
