@@ -18,9 +18,11 @@ This approach empowers developers with deeper control over model selection, fine
 
 ##  Setting up the Foundational Components
 
+```python
 from typing import Optional, List
 from enum import Enum
 import logging
 import openai
 from dataclasses import dataclass
 import base64
+```
