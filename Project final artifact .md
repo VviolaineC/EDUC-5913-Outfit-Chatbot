@@ -100,9 +100,19 @@ _initialize_model method is a private function within the LLMClient class that i
             raise
 ```
 
+Initializing the OpenAI API Client by Setting up the Necessary Configurations
 
-
-
+```python
+    def _initialize_openai(self):
+        """Initialize OpenAI API client"""
+        if not self.config.api_key:
+            raise ValueError("API key required for OpenAI models")
+            
+        openai.api_key = self.config.api_key
+        if self.config.api_base:
+            openai.api_base = self.config.api_base
+    
+```
 
 
 
