@@ -56,7 +56,7 @@ class ModelConfig:
 
 ## Define a Class LLMClient 
 
-A generic client for interacting with multiple types of language models.
+A generic client for interacting with multiple types of language models
 
 ```python
 
@@ -79,6 +79,26 @@ class LLMClient:
         self._initialize_model()
 ```
 
+## Private Function _initialize_model
+
+_initialize_model method is a private function within the LLMClient class that initializes the appropriate model based on the configuration provided during the creation of the client.
+
+```python
+
+    def _initialize_model(self):
+        """Initialize the appropriate model based on configuration"""
+        try:
+            if self.config.model_type in [ModelType.GPT4, ModelType.GPT35, ModelType.GPT4V]:
+                self._initialize_openai()
+            else:
+                raise ValueError(f"Unsupported model type: {self.config.model_type}")
+                
+            self.logger.info(f"Successfully initialized {self.config.model_type} model")
+            
+        except Exception as e:
+            self.logger.error(f"Error initializing model: {e}")
+            raise
+```
 
 
 
