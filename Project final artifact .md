@@ -182,7 +182,7 @@ Initializing the OpenAI API Client by Setting up the Necessary Configurations
             })
 ```
 
-## Generating Text Responses Using both Text-only Input and Text with Image Input.
+## Generating Text Responses Using both Text-only Input and Text with Image Input
 ```python
 def main():
    
