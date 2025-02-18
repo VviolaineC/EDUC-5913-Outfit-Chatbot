@@ -1,6 +1,6 @@
 # EDUC5913-Outfit-Chatbot-Cookbooks
 
-### Haipei Li & Zihan Cao
+### Zihan Cao
 :)
 
 ## Introduction
