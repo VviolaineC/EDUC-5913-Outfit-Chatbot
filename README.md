@@ -1,4 +1,4 @@
-# EDUC5913-Outfit-Chatbot-Coding
+# Outfit-Chatbot-Coding
 
 ## Introduction
 
